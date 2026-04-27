@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import SummaryForm from "./SummaryForm";
 import Link from "next/link";
 
-const STRAPI_URL = "http://127.0.0.1:1337";
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
 const PAGE_SIZE = 3;
 
 async function getSummaries(jwt: string, query: string, page: number) {

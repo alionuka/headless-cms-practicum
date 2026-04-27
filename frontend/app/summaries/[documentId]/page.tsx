@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { deleteSummaryAction } from "./actions";
 
-const STRAPI_URL = "http://127.0.0.1:1337";
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
 
 async function getSummary(documentId: string, jwt: string) {
   const res = await fetch(`${STRAPI_URL}/api/summaries/${documentId}`, {

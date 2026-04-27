@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const STRAPI_URL = "http://127.0.0.1:1337";
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
 
 async function getGlobal() {
   const res = await fetch(`${STRAPI_URL}/api/global?populate=*`, {
@@ -9,7 +9,8 @@ async function getGlobal() {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch global data");
+    console.error("Failed to fetch global data:", res.status, await res.text());
+    return null;
   }
 
   const json = await res.json();

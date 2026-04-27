@@ -3,7 +3,10 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const STRAPI_URL = "http://127.0.0.1:1337";
+const STRAPI_URL =
+  process.env.STRAPI_URL ||
+  process.env.NEXT_PUBLIC_STRAPI_URL ||
+  "http://127.0.0.1:1337";
 
 export type AuthState = {
   error?: string;
